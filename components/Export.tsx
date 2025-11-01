@@ -69,6 +69,12 @@ const Export: React.FC<ExportProps> = ({ inputFont, result }) => {
     }
     return null;
   };
+  
+  const fontDownloads = [
+    { role: 'Headline', font: result.headline },
+    { role: 'Body', font: result.body },
+    { role: 'Accent', font: result.accent },
+  ];
 
   return (
     <div className="mt-8">
@@ -97,6 +103,32 @@ const Export: React.FC<ExportProps> = ({ inputFont, result }) => {
                 </button>
                 {renderContent()}
             </div>
+        </div>
+        
+        <div className="w-full max-w-3xl mx-auto mt-8">
+            <h3 className="text-xl font-bold text-center text-gray-800 dark:text-white mb-4">Download Fonts</h3>
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 space-y-4">
+                {fontDownloads.map(({ role, font }) => (
+                    <div key={role} className="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
+                        <div>
+                            <p className="font-semibold text-gray-800 dark:text-white">{font.name}</p>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">{role}</p>
+                        </div>
+                        <a
+                            href={`https://fonts.google.com/specimen/${font.name.replace(/ /g, '+')}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-colors duration-300"
+                            aria-label={`Download ${font.name} from Google Fonts`}
+                        >
+                            Download
+                        </a>
+                    </div>
+                ))}
+            </div>
+            <p className="text-center text-xs text-gray-500 dark:text-gray-400 mt-4">
+                All fonts are from Google Fonts and are typically licensed under the SIL Open Font License. Always verify the license for your specific use case.
+            </p>
         </div>
     </div>
   );

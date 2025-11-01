@@ -1,0 +1,5 @@
+{
+  "name": "FontPairer",
+  "description": "An intelligent font pairing tool that provides recommendations for headlines, body text, and accents based on a user's input font. Powered by Gemini, it helps creators make confident typography decisions quickly.",
+  "requestFramePermissions": []
+}
